@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Medicine } from 'src/app/models/ui-models/medicine.model';
 import { MedicineService } from '../medicine.service';
@@ -26,7 +30,9 @@ export class ViewMedicineComponent implements OnInit
   }
 
 
-  constructor(private readonly medicineService: MedicineService, private readonly route:ActivatedRoute){ }
+  constructor(private readonly medicineService: MedicineService,
+              private readonly route:ActivatedRoute,
+              private snackbar: MatSnackBar){ }
 
 
   ngOnInit(): void
@@ -47,5 +53,24 @@ export class ViewMedicineComponent implements OnInit
         }
       }
     );
+  }
+
+  onUpdate(): void
+  {
+    this.medicineService.updateMedicine(this.medicine.id, this.medicine).subscribe
+    (
+      (successResponse) =>
+      {
+        //console.log(successResponse);
+        //Show Notification
+        this.snackbar.open('Medicine Updated Successfully', undefined, {duration: 1000});
+      },
+      (errorResponse) =>
+      {
+        //console.log(errorResponse);
+        //Show Notification
+        this.snackbar.open('Error Updating Medicine', undefined, {duration: 1000});
+      }
+    )
   }
 }
