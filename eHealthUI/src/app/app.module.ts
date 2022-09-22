@@ -56,13 +56,16 @@ import { MedicinesComponent } from './medicines/medicines.component';
 // Kiru - HttpClient
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+// Kiru - View single medicine
+import { ViewMedicineComponent } from './medicines/view-medicine/view-medicine.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TopNavComponent,
-    MedicinesComponent
+    MedicinesComponent,
+    ViewMedicineComponent
   ],
   imports: [
     BrowserModule,

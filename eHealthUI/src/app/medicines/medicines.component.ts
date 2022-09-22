@@ -14,7 +14,7 @@ import { MedicineService } from './medicine.service';
 export class MedicinesComponent implements OnInit
 {
   medicines: Medicine[] = [];
-  displayedColumns: string[] = ['id', 'medicineName', 'manufacturer', 'unitPrice','discount','quantity','disease','uses','expDate','imageUrl','status'];
+  displayedColumns: string[] = ['id', 'medicineName', 'manufacturer', 'unitPrice','discount','quantity','disease','uses','expDate','imageUrl','status', 'edit'];
 
   dataSource: MatTableDataSource<Medicine> = new MatTableDataSource<Medicine>();
 

@@ -37,3 +37,12 @@ body {
 .search-app:focus{
   border: 1px solid #aaa;
 }
+
+
+.top-row {
+  padding: 1em 0;
+}
+
+.mat-form-field{
+  width: 100%;
+}

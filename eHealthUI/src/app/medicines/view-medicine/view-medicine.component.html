@@ -1,0 +1,113 @@
+<div class="page-header">
+  <div class="container">
+    <h1>Medicine</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row top-row" >
+    <div class="col-xs-12 row end-xs">
+    <a routerLink="/medicines" color="primary" mat-raised-button>
+      <mat-icon>chevron_left</mat-icon>
+      Go back
+    </a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <!--Medicine Details-->
+      <form #medicineDetailsForm="ngForm">
+
+        <!-- ############# Kiru - Row 1 #############-->
+        <div class="row">
+
+          <div class="col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Medicine Name</mat-label>
+              <input type="text" matInput [(ngModel)]="medicine.medicineName" name="medicineName">
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Manufacturer</mat-label>
+              <input type="text" matInput [(ngModel)]="medicine.manufacturer" name="manufacturer">
+            </mat-form-field>
+          </div>
+
+        </div>
+
+        <!-- ############# Kiru - Row 2 ############# -->
+        <div class="row">
+
+          <div class="col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Disease</mat-label>
+              <input type="text" matInput [(ngModel)]="medicine.disease" name="disease">
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Uses</mat-label>
+              <input type="text" matInput [(ngModel)]="medicine.uses" name="uses">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- ############# Kiru - Row 3 ############# -->
+        <div class="row">
+
+          <div class="col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Unit Price</mat-label>
+              <input type="number" matInput [(ngModel)]="medicine.unitPrice" name="unitPrice">
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Quantity</mat-label>
+              <input type="number" matInput [(ngModel)]="medicine.quantity" name="quantity">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- ############# Kiru - Row 4 ############# -->
+        <div class="row">
+
+          <div class="col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Discount</mat-label>
+              <input type="number" matInput [(ngModel)]="medicine.discount" name="discount">
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Expiry Date</mat-label>
+              <input matInput [matDatepicker]="picker" matInput [(ngModel)]="medicine.expDate" name="expDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+        </div>
+
+        <!-- ############# Kiru - Row 5 #############-->
+        <div class="row">
+
+          <div class="col-xs-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Status</mat-label>
+              <input type="text" matInput [(ngModel)]="medicine.status" name="status">
+            </mat-form-field>
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
