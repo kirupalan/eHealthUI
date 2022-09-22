@@ -55,6 +55,7 @@ import { TopNavComponent } from './layout/top-nav/top-nav.component';
 import { MedicinesComponent } from './medicines/medicines.component';
 // Kiru - HttpClient
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -105,7 +106,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatSortModule,
     MatTableModule,
     // Kiru - Add below modules to the imports array
-    HttpClientModule
+    HttpClientModule,
+    // Kiru - Search string
+    FormsModule
   ],
 
   schemas : [

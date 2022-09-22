@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto,
+  "Helvetica Neue",
+  sans-serif;
+}
 
 .page-header {
   background: #f1f1f1;
@@ -14,4 +22,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mt-1 {
   margin-top: 1em;
+}
+
+.search-app{
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  border-radius: 3px;
+}
+
+.search-app:active{
+  border: 1px solid #bbb;
+}
+
+.search-app:focus{
+  border: 1px solid #aaa;
 }

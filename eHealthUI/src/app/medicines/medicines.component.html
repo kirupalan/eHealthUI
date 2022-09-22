@@ -5,34 +5,43 @@
 </div>
 
 <div class="container">
+
+  <div class="row end-xs mt-1">
+    <div class="col-xs-12">
+      <input type="text" class="search-app" placeholder="Search Medicines"
+      [(ngModel)]="filterString"
+      (keyup)="filterMedicines()">
+    </div>
+  </div>
+
   <div class="mt-1 mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" class="">
+    <table mat-table matSort [dataSource]="dataSource" class="">
 
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
 
       <!-- Id Column -->
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
       </ng-container>
 
       <!-- Medicine Column -->
       <ng-container matColumnDef="medicineName">
-        <th mat-header-cell *matHeaderCellDef>Medicine</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Medicine</th>
         <td mat-cell *matCellDef="let element"> {{element.medicineName}} </td>
       </ng-container>
 
       <!-- Manufacturer Column -->
       <ng-container matColumnDef="manufacturer">
-        <th mat-header-cell *matHeaderCellDef>Manufacturer</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Manufacturer</th>
         <td mat-cell *matCellDef="let element"> {{element.manufacturer}} </td>
         <!--{element.dob | date:'mm/dd/yyyy'} -->
       </ng-container>
 
       <!-- Unit Price Column -->
       <ng-container matColumnDef="unitPrice">
-        <th mat-header-cell *matHeaderCellDef>Unit Price</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Unit Price</th>
         <td mat-cell *matCellDef="let element"> {{element.unitPrice}} </td>
       </ng-container>
 
@@ -50,13 +59,13 @@
 
       <!-- Disease Column -->
       <ng-container matColumnDef="disease">
-        <th mat-header-cell *matHeaderCellDef>Disease</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Disease</th>
         <td mat-cell *matCellDef="let element"> {{element.disease}} </td>
       </ng-container>
 
       <!-- Uses Column -->
       <ng-container matColumnDef="uses">
-        <th mat-header-cell *matHeaderCellDef>Uses</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Uses</th>
         <td mat-cell *matCellDef="let element"> {{element.uses}} </td>
       </ng-container>
 
@@ -74,7 +83,7 @@
 
       <!-- Status Column -->
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
         <td mat-cell *matCellDef="let element"> {{element.status}} </td>
       </ng-container>
 
