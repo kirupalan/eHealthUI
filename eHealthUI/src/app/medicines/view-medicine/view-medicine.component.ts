@@ -24,7 +24,10 @@ export class ViewMedicineComponent implements OnInit
     expDate:'',
     imageUrl:'',
     status:''
-  }
+  };
+
+  isNewMedicine = false;
+  header = '';
 
 
   constructor(private readonly medicineService: MedicineService,
@@ -36,18 +39,31 @@ export class ViewMedicineComponent implements OnInit
   ngOnInit(): void
   {
     //Fetch Medicine
-    this.route.paramMap.subscribe(
-      (params) => {
+    this.route.paramMap.subscribe((params) =>
+    {
         this.medicineId = params.get('id');
 
-        if(this.medicineId) {
-          this.medicineService.getMedicine(this.medicineId)
+        if(this.medicineId)
+        {
+          if(this.medicineId.toLowerCase() === 'Add'.toLowerCase()){
+            // Add Medicine
+            this.isNewMedicine = true;
+            this.header = 'Add Medicine';
+          }
+          else
+          {
+            // Update Medicing
+            this.isNewMedicine = false;
+            this.header = 'Edit Medicine';
+
+            this.medicineService.getMedicine(this.medicineId)
             .subscribe(
-              (successResponse) => {
-                //console.log(successResponse);
+              (successResponse) =>
+              {
                 this.medicine = successResponse;
               }
             )
+          }
         }
       }
     );
@@ -75,10 +91,25 @@ onDelete(): void
     (successResponse) =>
     {
       this.snackbar.open('Medicine Deleted Successfully', undefined, {duration: 1000});
-      setTimeout(() => {
-        this.router.navigateByUrl('medicines');
-      }, 2000);
 
+      setTimeout(() => {this.router.navigateByUrl('medicines');}, 2000);
+    },
+    (errorResponse) =>
+    {
+      this.snackbar.open('Error Deleting Medicine', undefined, {duration: 1000});
+    }
+  )
+}
+
+onAdd(): void
+{
+  this.medicineService.addMedicine(this.medicine).subscribe
+  (
+    (successResponse) =>
+    {
+      this.snackbar.open('Medicine Added Successfully', undefined, {duration: 1000});
+
+      setTimeout(() => {this.router.navigateByUrl(`medicines/${successResponse.id}`);}, 2000);
     },
     (errorResponse) =>
     {

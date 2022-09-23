@@ -11,15 +11,13 @@
       <input type="text" class="search-app" placeholder="Search Medicines"
       [(ngModel)]="filterString"
       (keyup)="filterMedicines()">
+      <a routerLink="/medicines/add" mat-raised-button color="primary" class="ml-1">Add Medicine</a>
     </div>
   </div>
 
 
   <div class="mt-1 mat-elevation-z8">
     <table mat-table matSort [dataSource]="dataSource" class="">
-
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
 
       <!-- Id Column -->
       <ng-container matColumnDef="id">
