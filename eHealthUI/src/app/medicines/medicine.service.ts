@@ -69,4 +69,20 @@ export class MedicineService
 
     return this.httpClient.post<Medicine>(this.baseApiUrl + '/Medicine', addMedicineRequest);
   }
+
+  uploadImage(medicineId: string, file: File): Observable<any>
+  {
+    const formData = new FormData();
+    formData.append("profileImage", file);
+
+    return this.httpClient.post(this.baseApiUrl + '/Medicine/' + medicineId + '/upload-image',
+    formData, {
+      responseType: 'text'
+    }
+    );
+  }
+
+  getImagePath(relImgPath: string){
+    return `${this.baseApiUrl}/${relImgPath}`;
+  }
 }

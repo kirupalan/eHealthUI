@@ -125,8 +125,34 @@
 
           </div>
         </div>
-
       </form>
     </div>
-  </div>
+
+    <!-- ############# Profile Image #############-->
+    <div class="col-xs-6">
+
+      <div class="row center-xs">
+        <div class="image-container">
+          <img [src]="medicineImageURL" alt="Medicine Image">
+        </div>
+      </div>
+
+      <!-- ############# Profile Upload Button #############-->
+      <div class="row">
+        <div class="col-xs-12 row center-xs mt-1" *ngIf="!isNewMedicine">
+          <input hidden type="file" #imageUpload (change)="uploadImage($event)">
+          <button mat-raised-button color="primary" (click)="imageUpload.click()">Change Image</button>
+        </div>
+
+        <div class="col-xs-12 row center-xs mt-1" *ngIf="isNewMedicine">
+          <input hidden type="file" #imageUpload (change)="uploadImage($event)">
+        </div>
+
+      </div>
+
+    </div>
+
+  <div>
+<div>
+
 </div>

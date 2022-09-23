@@ -50,3 +50,20 @@ body {
 .mat-form-field{
   width: 100%;
 }
+
+.image-container {
+  width: 200px;
+  height:200px;
+  background-color: #ffffff;
+  border: 2px solid #d5d1d1;
+  border-radius: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-container img{
+  width: 200px;
+
+}

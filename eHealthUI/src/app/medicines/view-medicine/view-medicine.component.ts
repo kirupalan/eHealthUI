@@ -12,6 +12,7 @@ import { MedicineService } from '../medicine.service';
 export class ViewMedicineComponent implements OnInit
 {
   medicineId: string | null | undefined;
+
   medicine: Medicine = {
     id: '',
     medicineName: '',
@@ -28,7 +29,7 @@ export class ViewMedicineComponent implements OnInit
 
   isNewMedicine = false;
   header = '';
-
+  medicineImageURL ='';
 
   constructor(private readonly medicineService: MedicineService,
               private readonly route:ActivatedRoute,
@@ -43,24 +44,31 @@ export class ViewMedicineComponent implements OnInit
     {
         this.medicineId = params.get('id');
 
+
         if(this.medicineId)
         {
-          if(this.medicineId.toLowerCase() === 'Add'.toLowerCase()){
+          if(this.medicineId.toLowerCase() === 'Add'.toLowerCase())
+          {
             // Add Medicine
             this.isNewMedicine = true;
             this.header = 'Add Medicine';
+            this.setImage();
           }
           else
           {
-            // Update Medicing
+            // Update Medicine
             this.isNewMedicine = false;
             this.header = 'Edit Medicine';
-
-            this.medicineService.getMedicine(this.medicineId)
-            .subscribe(
+            this.medicineService.getMedicine(this.medicineId).subscribe
+            (
               (successResponse) =>
               {
                 this.medicine = successResponse;
+                this.setImage();
+              },
+              (errorResponse) =>
+              {
+                this.setImage();
               }
             )
           }
@@ -117,5 +125,40 @@ onAdd(): void
     }
   )
 }
+
+private setImage(): void
+{
+  if(this.medicine.imageUrl)
+  {
+    this.medicineImageURL = this.medicineService.getImagePath(this.medicine.imageUrl);
+  }
+  else
+  {
+    this.medicineImageURL = '/assets/Default.jpg';
+  }
+}
+
+  uploadImage(event: any): void
+  {
+    if(this.medicine.id)
+    {
+      const file: File = event.target.files[0];
+      this.medicineService.uploadImage(this.medicine.id, file).subscribe
+      (
+        (successResponse) =>
+        {
+          this.medicine.imageUrl = successResponse;
+          this.setImage();
+          this.snackbar.open('Uploaded Image Successfully', undefined, {duration: 1000});
+        },
+        (errorResponse) =>
+        {
+          this.snackbar.open('Error Uploading Image', undefined, {duration: 1000});
+        }
+      )
+    }
+  }
+
+
 
 }
