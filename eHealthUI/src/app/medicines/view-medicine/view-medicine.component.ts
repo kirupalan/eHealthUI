@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Medicine } from 'src/app/models/ui-models/medicine.model';
 import { MedicineService } from '../medicine.service';
 
@@ -32,7 +29,8 @@ export class ViewMedicineComponent implements OnInit
 
   constructor(private readonly medicineService: MedicineService,
               private readonly route:ActivatedRoute,
-              private snackbar: MatSnackBar){ }
+              private snackbar: MatSnackBar,
+              private router: Router ){ }
 
 
   ngOnInit(): void
@@ -61,16 +59,32 @@ export class ViewMedicineComponent implements OnInit
     (
       (successResponse) =>
       {
-        //console.log(successResponse);
-        //Show Notification
         this.snackbar.open('Medicine Updated Successfully', undefined, {duration: 1000});
       },
       (errorResponse) =>
       {
-        //console.log(errorResponse);
-        //Show Notification
         this.snackbar.open('Error Updating Medicine', undefined, {duration: 1000});
       }
     )
   }
+
+onDelete(): void
+{
+  this.medicineService.deleteMedicine(this.medicine.id).subscribe
+  (
+    (successResponse) =>
+    {
+      this.snackbar.open('Medicine Deleted Successfully', undefined, {duration: 1000});
+      setTimeout(() => {
+        this.router.navigateByUrl('medicines');
+      }, 2000);
+
+    },
+    (errorResponse) =>
+    {
+      this.snackbar.open('Error Deleting Medicine', undefined, {duration: 1000});
+    }
+  )
+}
+
 }

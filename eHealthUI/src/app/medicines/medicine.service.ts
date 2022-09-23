@@ -44,4 +44,10 @@ export class MedicineService
 
     return this.httpClient.put<Medicine>(this.baseApiUrl + '/Medicine/' + medicineId, updateMedicineRequest);
   }
+
+  deleteMedicine(medicineId: string): Observable<Medicine>
+  {
+    return this.httpClient.delete<Medicine>(this.baseApiUrl + '/Medicine/' + medicineId)
+  }
+
 }
