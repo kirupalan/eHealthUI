@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 // Kiru - Add below imports to the Imports Section on the top of the page
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -40,24 +39,34 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRippleModule } from '@angular/material/core';
+
 // Kiru - Material Popups & Modals
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+
 // Kiru - Material Data tables
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+
 // Kiru - Navigation Component
 import { TopNavComponent } from './layout/top-nav/top-nav.component';
-// Kiru - Medicine Component
-import { MedicinesComponent } from './medicines/medicines.component';
+
 // Kiru - HttpClient
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-// Kiru - View single medicine
-import { ViewMedicineComponent } from './medicines/view-medicine/view-medicine.component';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+
+// Kiru - Components
+import { MedicinesComponent } from    'src/app/components/medicines/medicines.component';
+import { ViewMedicineComponent } from 'src/app/components/medicines/view-medicine/view-medicine.component';
+
+import { LoginComponent } from        'src/app/components/login/login.component';
+import { SignupComponent } from       'src/app/components/signup/signup.component';
+import { UsersComponent } from        'src/app/components/users/users.component';
+import { OrdersComponent } from       'src/app/components/orders/orders.component';
+import { CartComponent } from         'src/app/components/cart/cart.component';
 
 
 @NgModule({
@@ -65,8 +74,14 @@ import { ViewMedicineComponent } from './medicines/view-medicine/view-medicine.c
     AppComponent,
     TopNavComponent,
     MedicinesComponent,
-    ViewMedicineComponent
+    ViewMedicineComponent,
+    LoginComponent,
+    SignupComponent,
+    UsersComponent,
+    OrdersComponent,
+    CartComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -111,7 +126,8 @@ import { ViewMedicineComponent } from './medicines/view-medicine/view-medicine.c
     // Kiru - Add below modules to the imports array
     HttpClientModule,
     // Kiru - Search string
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
 
   schemas : [

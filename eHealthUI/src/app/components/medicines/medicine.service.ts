@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Medicine } from '../models/api-models/medicine.model';
-import { UpdateMedicineRequest } from '../models/api-models/update-medicine-request.model';
-import { AddMedicineRequest } from '../models/api-models/add-medicine-request.model';
+import { Medicine } from 'src/app/models/api-models/medicine.model';
+import { UpdateMedicineRequest } from 'src/app/models/api-models/update-medicine-request.model';
+import { AddMedicineRequest } from 'src/app/models/api-models/add-medicine-request.model';
 
 @Injectable
 (

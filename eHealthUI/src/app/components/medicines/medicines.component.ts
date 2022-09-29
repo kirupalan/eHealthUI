@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { Medicine } from '../models/ui-models/medicine.model';
-import { MedicineService } from './medicine.service';
+import { MatPaginator }                 from '@angular/material/paginator';
+import { MatSort }                      from '@angular/material/sort';
+import { MatTableDataSource }           from '@angular/material/table';
+import { Medicine }                     from 'src/app/models/ui-models/medicine.model';
+import { MedicineService }              from 'src/app/components/medicines/medicine.service';
 
 @Component({
   selector: 'app-medicines',
@@ -25,6 +25,7 @@ export class MedicinesComponent implements OnInit
   @ViewChild(MatSort) matSort!: MatSort;
 
   filterString ='';
+Medicine: any;
 
   constructor(private medicineService: MedicineService) { }
 
